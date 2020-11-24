@@ -1,0 +1,41 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<!--
+  - $implicit: item Implicit Context Variable
+  - index: so thu tu cua item hien tai
+  - count: do dai cua array
+  - first: true neu nhu item do la item dau tien trong array
+  - last: true neu nhu item do la item cuoi cung trong array
+  - even:  true neu nhu item do la item vi tri chan
+  - odd: true neu nhu item do la item vi tri le
+ -->
+<ul>
+  <ng-container *ngIf="user.length > 0; else NoUser">
+    <li
+      *ngFor="let U of user; index as idx; count as total; first as isFirst;last as isLast; even as isEven; odd as isOdd"
+    >
+      <span>{{U.id}} - {{U.name}} - {{U.phone}}</span>
+      <br />
+      <span>At index {{idx}} out of {{total}}</span>
+      <br />
+      <span *ngIf="isFirst">This is the first</span>
+      <br />
+      <span *ngIf="isLast">This is the last</span>
+      <br />
+      <span *ngIf="isEven">I'm Even number</span>
+      <br />
+      <span *ngIf="isOdd">I'm Odd number</span>
+    </li>
+  </ng-container>
+  <ng-template #NoUser>
+    No User
+  </ng-template>
+</ul>
+<button
+  *ngFor="let tag of tagbutton; last as isLast"
+  [class.right-margin]="!isLast"
+>
+  {{tag}}
+</button>
